@@ -1,0 +1,105 @@
+<style>
+    /* Navbar Search Input & Button Smaller */
+.navbar .search-input {
+    width: 450px; /* reduced width from 100% */
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+.navbar .search-btn {
+    background-color: #fe424d;
+    color: #fff;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.6rem;
+    display: inline-block;
+    width: 100px; /* smaller width */
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-left: 1px; /* pulls button closer to input */
+}
+
+.navbar .search-btn:hover {
+    background-color: #e63946;
+}
+
+/* Keep search input & button next to logo */
+.navbar .navbar-brand + .search-input,
+.navbar .navbar-brand + .search-input + .search-btn {
+    margin-left: 20px; /* small spacing from logo */
+    vertical-align: middle; /* align with logo */
+}
+
+/* Responsive for mobile */
+@media (max-width: 560px) {
+    .navbar .search-input,
+    .navbar .search-btn {
+        width: 100%; /* full width on small screens */
+        display: block;
+        margin: 0.6rem auto;
+    }
+}
+
+  
+  </style>
+  
+  <nav class="navbar navbar-expand-md navbar-light bg-light border-bottom sticky-top">
+      <div class="container-fluid">
+          <!-- Brand Logo -->
+          <a class="navbar-brand" href="/listings">
+              <i class="fa-regular fa-compass"></i> <b>WanderLust</b>
+          </a>
+  
+          <!-- Mobile Toggle Button -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <!-- Navbar Content -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav me-auto">
+                  <li class="nav-item"><a class="nav-link" href="/listings"><b>Explore</b></a></li>
+              </ul>
+  
+              <!-- Search Bar -->
+              <form action="/listings/search" method="get" class="d-flex flex-column flex-md-row px-2">
+                  <input class="form-control search-input" placeholder="Search Destination" name="query">
+                  <button class="btn search-btn mt-2 mt-md-0">
+                      <i class="fa-solid fa-magnifying-glass"></i> Search
+                  </button>
+              </form>
+  
+              <!-- Auth Links -->
+              <ul class="navbar-nav ms-auto text-center">
+                  <li class="nav-item"><a class="nav-link" href="/listings/new">Host Home</a></li>
+                  <% if (!currUser) { %>
+                      <li class="nav-item"><a class="nav-link" href="/signup"><b>Signup</b></a></li>
+                      <li class="nav-item"><a class="nav-link" href="/login"><b>Login</b></a></li>
+                  <% } else { %>
+                         <li class="nav-item">
+                   <a class="nav-link" href="/host/dashboard">
+                     Host Dashboard
+                     </a>
+                     </li>
+                      <li class="nav-item">
+                      <a class="nav-link" href="/profile">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                      <a class="nav-link position-relative" href="/notifications">
+                           🔔  </a>
+                         </li>
+                      <li class="nav-item">
+                     <a class="nav-link" href="/logout">Logout</a></li>
+                  <% } %>
+                 <% if (currUser) { %>
+                <li class="nav-item">
+               <a class="nav-link" href="/wishlist">❤️ Wishlist</a>
+                </li>
+             <% } %>
+              </ul>
+          </div>
+      </div>
+  </nav>
+  
