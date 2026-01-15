@@ -1,7 +1,7 @@
 const Booking = require("../models/booking");
 const Listing = require("../models/listting");
 const Notification = require("../models/notification");
-const { sendBookingEmail } = require("../utils/sendEmail");
+const { sendEmail } = require("../utils/sendEmail");
 
 module.exports.createBooking = async (req, res) => {
   const { checkIn, checkOut} = req.body;
@@ -40,12 +40,14 @@ module.exports.createBooking = async (req, res) => {
     link: `/bookings/my`
   });
    // ✅ SEND EMAIL AFTER BOOKING
-  await sendBookingEmail({
-    to: req.user.email,
-    listing,
-    checkIn,
-    checkOut,
-  });
+   await sendEmail({
+  to: req.user.email,
+  subject: "Booking Confirmed ✅",
+  html: `
+    <h2>Booking Successful</h2>
+    <p>Your booking has been confirmed.</p>
+  `,
+});
   req.flash("success", "Booking successful!");
   res.redirect("/bookings/my");
 };
