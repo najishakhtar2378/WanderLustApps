@@ -13,7 +13,6 @@
   border: 1px solid #e5e7eb;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  position: relative;
   overflow: hidden;
 }
 
@@ -53,6 +52,12 @@
   padding: 6px 14px 8px;
   font-size: 1rem;
 }
+.notification-button {
+  border-radius: 15px;
+  background-color: bisque;
+  padding: 2px 10px 3px;
+  font-size: 1rem;
+}
 </style>
 
 <div class="container mt-5 notification-container">
@@ -85,11 +90,10 @@
         <a href="<%= n.link %>" class="btn btn-outline-dark notification-btn">
           View
         </a>
-
       </div>
+      <form action="/notifications/<%= n._id %>?_method=DELETE" method="POST">
+         <button class="notification-button" type="submit">Delete🔔</button>
+       </form>
     </div>
   <% } %>
 </div>
-
-
-
