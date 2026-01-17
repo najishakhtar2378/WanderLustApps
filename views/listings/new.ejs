@@ -1,4 +1,92 @@
 <% layout("./layouts/boilerplate") %>
+<style>
+ body {
+  background: #f7f7f7;
+}
+
+.create-listing-card {
+  background: #ffffff;
+  padding: 2.2rem;
+  border-radius: 22px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.12);
+  border-top: 6px solid #ff385c;
+}
+
+/* Heading */
+h2 {
+  font-weight: 600;
+  color: #222;
+}
+
+/* Labels */
+.form-label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+  border-radius: 14px;
+  padding: 12px 15px;
+  border: 1px solid #e5e5e5;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #ff385c;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(255,56,92,0.15);
+}
+
+/* File input */
+input[type="file"] {
+  background: #fff;
+}
+
+/* Submit button */
+.add-btn {
+  background: linear-gradient(135deg, #ff385c, #ff5a6f);
+  border: none;
+  color: #fff;
+  border-radius: 16px;
+  padding: 13px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255,56,92,0.4);
+}
+
+/* Validation */
+.valid-feedback {
+  color: #28a745;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+}
+
+/* Category select highlight */
+.form-select option:checked {
+  background: #ff385c;
+  color: #fff;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .create-listing-card {
+    padding: 1.6rem;
+  }
+}
+</style>
 <body>
     <div class="container mt-4">
         <div class="row justify-content-center">
@@ -8,7 +96,7 @@
                     
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" placeholder="Add a catchy title" name="listing[title]" class="form-control" required>
+                        <input type="text" placeholder="Beutifull see view apparment" name="listing[title]" class="form-control" required>
                         <div class="valid-feedback">Title looks good!</div>
                     </div>
 
@@ -19,7 +107,9 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="image" class="form-label">Upload Listing Image</label>
+                          <label class="form-label">Upload Listing Image
+                          <span class="text-muted">(JPG / PNG)</span>
+                              </label>
                         <input type="file" name="listing[image]" class="form-control">
                     </div>
 
