@@ -1,73 +1,139 @@
 <% layout("./layouts/boilerplate") %>
 <style>
-  .text-center {
+  body {
+    background: hwb(193 76% 1%);
+  }
+
+  /* Header */
+  .dashboard-title {
     text-align: center;
-    color: crimson;
-  }
-  .card {
-    margin-left: 10px;
-    border-radius: 12px;
-    background-color: #f9f6f5;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-weight: 700;
+    color: #ff385c;
+    margin-bottom: 2rem;
   }
 
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  /* Total Earnings Card */
+  .total-earnings-card {
+    background: linear-gradient(135deg, #ff385c, #ff5a6f);
+    color: white;
+    border-radius: 10px;
+    padding: 0.8rem;
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(255,56,92,0.35);
+    margin-bottom: 2.5rem;
+    animation: pulse 2.5s infinite;
   }
 
-  .card-title {
-    margin-left: 10px;
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: #dd1313;
+  .total-earnings-card h2 {
+    font-weight: 800;
+    margin-top: 0.5rem;
+  }
+
+  /* Booking Card */
+  .booking-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    animation: fadeUp 0.6s ease forwards;
+    opacity: 0;
+  }
+
+  .booking-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 36px rgba(255,56,92,0.25);
+  }
+
+  .listing-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 0.6rem;
+  }
+
+  .guest-name {
+    color: #555;
+    margin-bottom: 0.8rem;
+  }
+
+  .dates {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .status-badge {
+    background: #e6fff1;
+    color: #28a745;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    display: inline-block;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); }
   }
 </style>
-   <div class="card text-center mb-4 shadow-sm">
-  <div class="card-body">
-    <h4>Total Earnings</h4>
-    <h2 class="text-success">
-      ₹ <%= totalEarnings.toLocaleString("en-IN") %>
-    </h2>
-  </div>
-</div>
-  <div class="container mt-4">
-    <h2 class="text-center mb-4">🏠 My Dashboard</h2>
 
-    <% if (bookings.length === 0) { %>
-    <p class="text-center">
+<div class="container mt-4">
+
+  <h2 class="dashboard-title">🏡 Host Dashboard</h2>
+
+  <!-- TOTAL EARNINGS -->
+  <div class="total-earnings-card">
+    <h4>Total Earnings</h4>
+    <h2>₹ <%= totalEarnings.toLocaleString("en-IN") %></h2>
+  </div>
+
+  <% if (bookings.length === 0) { %>
+    <p class="text-center text-muted">
       No bookings on your listings yet.
     </p>
   <% } %>
 
-    <div class="row">
-      <% bookings.forEach(b => { %>
-      <div class="col-md-6 mb-3">
-        <div class="card shadow-sm">
-          <div class="card-body">
-            <h5 class="card-title">
-              <%= b.listing.title %>
-            </h5>
+  <div class="row">
+    <% bookings.forEach((b, index) => { %>
+      <div class="col-md-6 col-lg-4" style="animation-delay:<%= index * 0.1 %>s">
+        <div class="booking-card">
 
-            <p class="mb-1">
-              <strong>Guest:</strong> <%= b.user.username %>
-            </p>
-
-            <p class="mb-1">
-              <strong>Check-in:</strong> <%= b.checkIn.toDateString() %>
-            </p>
-
-            <p class="mb-1">
-              <strong>Check-out:</strong> <%= b.checkOut.toDateString() %>
-            </p>
-
-            <span class="badge bg-success">
-              Active
-            </span>
+          <div class="listing-title">
+            <%= b.listing.title %>
           </div>
+
+          <div class="guest-name">
+            👤 <strong>Guest:</strong> <%= b.user.username %>
+          </div>
+
+          <div class="dates">
+            <span>📅 <%= b.checkIn.toDateString() %></span>
+            <span>➡ <%= b.checkOut.toDateString() %></span>
+          </div>
+
+          <span class="status-badge">ACTIVE</span>
+
         </div>
       </div>
     <% }) %>
-    </div>
   </div>
+</div>
