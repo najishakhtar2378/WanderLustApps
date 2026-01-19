@@ -4,7 +4,7 @@
 </button>
 <style>
   body {
-    background:  #c0f8f9;
+    background:  #f5f5f5;
   }
 
   /* Header */
@@ -124,24 +124,6 @@ body.dark .dark-floating {
   color: #111;
 }
 </style>
-
-<script>
-const btn = document.getElementById("darkToggle");
-if (localStorage.getItem("darkMode") === "on") {
-  document.body.classList.add("dark");
-  btn.innerText = "☀";
-}
-btn.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  if (document.body.classList.contains("dark")) {
-    localStorage.setItem("darkMode", "on");
-    btn.innerText = "☀";
-  } else {
-    localStorage.setItem("darkMode", "off");
-    btn.innerText = "🌙";
-  }
-});
-</script>
 <div class="container mt-4">
   <h2 class="dashboard-title">🏡 Host Dashboard</h2>
 
@@ -182,3 +164,20 @@ btn.addEventListener("click", () => {
   </div>
 </div>
 
+<script>
+const btn = document.getElementById("darkToggle");
+if (localStorage.getItem("darkMode") === "on") {
+  document.body.classList.add("dark");
+  btn.innerText = "☀";
+}
+btn.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    localStorage.setItem("darkMode", "on");
+    btn.innerText = "☀";
+  } else {
+    localStorage.setItem("darkMode", "off");
+    btn.innerText = "🌙";
+  }
+});
+</script>
