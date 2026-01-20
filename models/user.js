@@ -10,6 +10,11 @@ const userSchema = new Schema({
         required: true,
 
     },
+      role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user"
+  },
      profileImage: {
         url: String,
         filename: String
