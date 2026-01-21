@@ -41,20 +41,9 @@
         margin: 0.6rem auto;
     }
 }
-  .admin-badge {
-    position: fixed; /* Agar navbar ke top-right me rakhna hai */
-    top: 10px;       /* top se distance */
-    right: 10px;     /* right se distance */
-    padding: 0.5rem 0.75rem;
-    font-size: 0.85rem;
-    z-index: 1000;   /* overlay issues se bachne ke liye */
-  }
-
-  /* Agar aap chaho to button jaisa hover effect bhi add kar sakte ho */
-  .admin-badge:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
+ .badge{
+   padding-bottom: 0.5rem
+}
 
   
   </style>
@@ -89,7 +78,7 @@
               <ul class="navbar-nav ms-auto text-center">
                   <li class="nav-item"><a class="nav-link" href="/listings/new">Host Home</a></li>
                     <% if (currUser && currUser.role === "admin") { %>
-                        <span class="badge bg-danger admin-badge ms-2">
+                        <span class="badge bg-danger ms-2">
                         ADMIN
                       </span>
                      <% } %>
