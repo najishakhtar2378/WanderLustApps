@@ -4,6 +4,7 @@ const wrapAsync = require("../utils/wrapAsync.js");
 
 const Listing = require("../models/listting.js");
 const {isLoggedIn, isOwner,validateListing} = require("../middileware.js")
+cons{isAdmin}=require("../middileware.js")
 
 
 const listingController = require("../controllers/listings.js")
@@ -19,7 +20,7 @@ router.route("/")
    wrapAsync( listingController.createListing));
 
     // new route
-router.get("/new", isLoggedIn, listingController.renderNewForm)
+router.get("/new", isLoggedIn,isAdmin, listingController.renderNewForm)
 
 
 router.get("/category/:category", async (req, res) => {
@@ -64,7 +65,7 @@ router.route("/:id")
 .get( wrapAsync(listingController.showListing))
 .put(   upload.single("listing[image]"),validateListing,isLoggedIn,isOwner,
     wrapAsync( listingController.renderUpdateForm))
-    .delete(isLoggedIn,isOwner, wrapAsync(listingController.renderDelete));
+    .delete(isLoggedIn,isAdmin,isOwner, wrapAsync(listingController.renderDelete));
 
     
 
@@ -80,6 +81,6 @@ router.route("/:id")
 
 
     //Edit ROute
-    router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingController.editListing));
+    router.get("/:id/edit",isLoggedIn,isAdmin,isOwner, wrapAsync(listingController.editListing));
 module.exports = router;
 
