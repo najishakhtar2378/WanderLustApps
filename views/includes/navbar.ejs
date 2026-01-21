@@ -41,8 +41,8 @@
         margin: 0.6rem auto;
     }
 }
- .admin-badge{
-   padding:4px 8px; 
+ .badge{
+   padding:2px 6px; 
    font-size:12px;
    min-width:auto;
    height:auto
@@ -82,7 +82,7 @@
               <ul class="navbar-nav ms-auto text-center">
                   <li class="nav-item"><a class="nav-link" href="/listings/new">Host Home</a></li>
                     <% if (currUser && currUser.role === "admin") { %>
-                        <span class="badge bg-danger admin-badge ms-2">
+                        <span class="badge bg-danger ms-2">
                         ADMIN
                       </span>
                      <% } %>
