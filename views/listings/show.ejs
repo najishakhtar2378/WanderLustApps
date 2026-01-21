@@ -56,6 +56,20 @@
                     <p class="card-text"><%= listing.location %>, <%= listing.country %></p>
                 </div>
             </div>
+            <% if (currUser && currUser.role === "admin") { %>
+          <a href="/listings/<%= listing._id %>/edit"
+            class="btn btn-warning">
+                ✏️ Edit
+                   </a>
+
+         <form action="/listings/<%= listing._id %>?_method=DELETE"
+        method="POST"
+        class="d-inline">
+         <button class="btn btn-danger">
+      🗑 Delete
+    </button>
+  </form>
+<% } %>
            <% if (currUser) { %>
              <div class="text-center mt-2">
               <form action="/wishlist/<%= listing._id %>" method="POST">
