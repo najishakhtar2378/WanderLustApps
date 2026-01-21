@@ -3,8 +3,8 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 
 const Listing = require("../models/listting.js");
-const {isLoggedIn, isOwner,validateListing} = require("../middileware.js")
-cons{isAdmin}=require("../middileware.js")
+const {isLoggedIn,isAdmin,isOwner,validateListing} = require("../middileware.js")
+
 
 
 const listingController = require("../controllers/listings.js")
