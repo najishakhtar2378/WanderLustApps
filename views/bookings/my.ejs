@@ -100,6 +100,11 @@
 
                   Check-out:
                   <%= booking.checkOut ? booking.checkOut.toDateString() : "No date set" %>
+
+                  <span class="badge 
+                <%= booking.paymentStatus === 'paid' ? 'bg-success' : 'bg-warning' %>">
+               <%= booking.paymentStatus.toUpperCase() %>
+                    </span>
               </div>
 
               <a class="view-link" href="/listings/<%= booking.listing._id %>">
