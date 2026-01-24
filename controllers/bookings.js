@@ -33,18 +33,14 @@ module.exports.createBooking = async (req, res) => {
     bookingStatus: "pending"
   });
 
-  await booking.save();
-  return res.redirect(`/payments/${booking._id}`);
-  /* 🔔 NOTIFICATION */
+   /* 🔔 NOTIFICATION */
   await Notification.create({
     user: req.user._id,
     message: "Your booking has been confirmed!",
     link: `/bookings/my`
-  });
-   
-  
-  req.flash("success", "Booking successful!");
-  res.redirect("/bookings/my");
+  })
+  await booking.save();
+  return res.redirect(`/payments/${booking._id}`);
 };
 
 module.exports.myBookings = async (req, res) => {
