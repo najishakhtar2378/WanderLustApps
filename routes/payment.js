@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Booking = require("../models/booking");
 const { isLoggedIn } = require("../middileware.js");
+const paymentSuccess = require("../controllers/paymentController");
 
 router.get("/:id", isLoggedIn, async (req, res) => {
   const booking = await Booking.findById(req.params.id).populate("listing");
@@ -13,6 +14,7 @@ router.post("/:id/success", isLoggedIn, async (req, res) => {
     paymentStatus: "paid",
     bookingStatus: "confirmed"
   });
+  router.post("/payments/:id/success", isLoggedIn, paymentSuccess.paymentSuccess);
 
   req.flash("success", "Payment Successful 🎉 Booking Confirmed!");
   res.redirect("/bookings/my");
