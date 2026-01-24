@@ -28,10 +28,13 @@ module.exports.createBooking = async (req, res) => {
     user: req.user._id,
     checkIn,
     checkOut,
-    totalPrice
+    totalPrice,
+    paymentStatus: "pending",
+    bookingStatus: "pending"
   });
 
   await booking.save();
+  return res.redirect(`/payments/${booking._id}`);
   /* 🔔 NOTIFICATION */
   await Notification.create({
     user: req.user._id,
