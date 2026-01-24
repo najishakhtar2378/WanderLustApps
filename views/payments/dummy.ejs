@@ -1,0 +1,161 @@
+<% layout("/layouts/boilerplate") %>
+ <style>
+  /* body{
+    background: lab(93% -22.97 29.08);
+  } */
+  /* 🔥 GLOBAL PAGE TRANSITION */
+body.global-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  animation: reveal 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+  overflow-x: hidden;
+}
+
+/* Cinematic fade + lift */
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Floating gradient blobs */
+body.global-page::before,
+body.global-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body.global-page::before {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,56,92,0.18), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(0,0,0,0.06), transparent 40%);
+  animation: floatBg 14s ease-in-out infinite alternate;
+}
+
+body.global-page::after {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(0,123,255,0.12), transparent 45%);
+  animation: floatBg 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatBg {
+  from { transform: translateY(0); }
+  to { transform: translateY(-40px); }
+}
+
+
+  /* payment page styling */
+
+  .payment-wrapper {
+  animation: fadeSlide 0.8s ease-in-out;
+}
+.payment-title {
+  font-weight: 600;
+  color: #222;
+}
+.payment-card {
+  max-width: 420px;
+  margin: auto;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ffffff, #f7f7f7);
+  animation: popUp 0.6s ease;
+}
+.amount-box {
+  background: linear-gradient(135deg, #ff385c, #ff5a6f);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 14px;
+  margin-bottom: 1.5rem;
+}
+.amount {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+}
+.pay-btn {
+  transition: all 0.3s ease;
+}
+.pay-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(40, 167, 69, 0.4);
+}
+
+.fail-btn {
+  transition: all 0.3s ease;
+}
+
+.fail-btn:hover {
+  transform: scale(1.03);
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.secure-text {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Animations */
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ </style>
+ <body class="global-page">
+<div class="container mt-5 text-center payment-wrapper">
+  <h2 class="payment-title">💳 Secure Payment</h2>
+  <div class="card payment-card p-4 shadow mt-4">
+    
+    <div class="amount-box mb-3">
+      <h5><%= booking.listing.title %></h5>
+      <p class="amount">
+        ₹ <%= booking.totalPrice.toLocaleString("en-IN") %>
+      </p>
+    </div>
+
+    <form action="/payments/<%= booking._id %>/success" method="POST">
+      <button class="btn btn-success btn-lg w-100 mb-3 pay-btn">
+        ✅ Pay Now
+      </button>
+    </form>
+
+    <form action="/payments/<%= booking._id %>/fail" method="POST">
+      <button class="btn btn-outline-danger btn-lg w-100 fail-btn">
+        ❌ Fail Payment
+      </button>
+    </form>
+
+    <p class="secure-text mt-3">
+      🔒 100% Secure Dummy Payment
+    </p>
+  </div>
+</div>
+ </body>
