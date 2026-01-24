@@ -1,37 +1,168 @@
+
 <% layout("./layouts/boilerplate") %>
 <style>
+  /* 🔥 GLOBAL PAGE TRANSITION */
+body.global-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  animation: reveal 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+  overflow-x: hidden;
+}
+
+/* Cinematic fade + lift */
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Floating gradient blobs */
+body.global-page::before,
+body.global-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body.global-page::before {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,56,92,0.18), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(0,0,0,0.06), transparent 40%);
+  animation: floatBg 14s ease-in-out infinite alternate;
+}
+
+body.global-page::after {
+  background:
+    radial-gradient(circle at 70% 30%, rgba(0,123,255,0.12), transparent 45%);
+  animation: floatBg 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatBg {
+  from { transform: translateY(0); }
+  to { transform: translateY(-40px); }
+}
+
   .wishlist-card:hover {
   transform: translateY(-5px);
   transition: 0.3s;
+  }
+/* Wishlist Page */
+.wishlist-title {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Card */
+.wishlist-card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  background: #fff;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+/* Image */
+.wishlist-card img {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.wishlist-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Body */
+.wishlist-card .card-body {
+  padding: 1.2rem;
+}
+
+/* Price */
+.wishlist-price {
+  color: #ff385c;
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+.wishlist-card .btn {
+  border-radius: 12px;
+  transition: all 0.25s ease;
+}
+
+.wishlist-card .btn-outline-dark:hover {
+  background: #000;
+  color: #fff;
+}
+
+.wishlist-card .btn-outline-danger:hover {
+  background: #ff385c;
+  color: #fff;
+}
+
+/* Empty State */
+.empty-wishlist {
+  animation: fadeUp 0.7s ease;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
-
-<div class="container mt-4">
-  <h2 class="text-center mb-4">❤️ My Wishlist</h2>
+<body class="global-page">
+<div class="container mt-5">
+  <h2 class="text-center mb-5 wishlist-title">
+    ❤️ My Wishlist
+  </h2>
 
   <% if (listings.length === 0) { %>
-    <div class="text-center mt-5">
-      <h5>My wishlist is empty</h5>
-      <a href="/listings" class="btn btn-danger mt-3">Explore Listings</a>
+    <div class="text-center mt-5 empty-wishlist">
+      <h5 class="mb-3">Your wishlist is empty</h5>
+      <a href="/listings" class="btn btn-danger px-4 py-2">
+        Explore Listings
+      </a>
     </div>
   <% } else { %>
-
     <div class="row">
       <% listings.forEach(listing => { %>
-        <div class="col-md-4 mb-4">
-          <div class="card shadow-sm h-100 wishlist-card">
-            <img src="<%= listing.image.url %>" class="card-img-top">
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card wishlist-card h-100">
+
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing">
 
             <div class="card-body text-center">
-              <h5><%= listing.title %></h5>
-              <p class="text-muted">
+              <h5 class="mb-1"><%= listing.title %></h5>
+
+              <p class="text-muted mb-2">
                 <%= listing.location %>, <%= listing.country %>
               </p>
-              <p class="fw-bold">
+
+              <p class="wishlist-price fw-bold mb-3">
                 ₹ <%= listing.price.toLocaleString("en-IN") %>
               </p>
 
-              <a href="/listings/<%= listing._id %>" class="btn btn-outline-dark btn-sm w-100 mb-2">
+              <a href="/listings/<%= listing._id %>" 
+                 class="btn btn-outline-dark btn-sm w-100 mb-2">
                 View Listing
               </a>
 
@@ -41,6 +172,7 @@
                 </button>
               </form>
             </div>
+
           </div>
         </div>
       <% }) %>
@@ -48,4 +180,5 @@
 
   <% } %>
 </div>
+</body>
 
