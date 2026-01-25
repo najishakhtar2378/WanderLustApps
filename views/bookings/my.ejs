@@ -110,6 +110,9 @@
               <a class="view-link" href="/listings/<%= booking.listing._id %>">
                 View Listing
               </a>
+              <a href="/invoice/<%= booking._id %>" class="btn btn-dark">
+                   Download Invoice
+                </a>
               <form action="/bookings/<%= booking._id %>?_method=DELETE" method="POST">
              <button class="view-link1">
                 Cancel Booking
