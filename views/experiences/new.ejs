@@ -1,0 +1,63 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+  .form-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #ff385c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+</style>
+<div class="form-container">
+  <h2>Host an Experience</h2>
+  <p>Share your skills and earn by hosting unique experiences.</p>
+
+  <form action="/host/experience" method="POST">
+    
+    <label>Experience Title</label>
+    <input type="text" name="title" required>
+
+    <label>Location</label>
+    <input type="text" name="location" required>
+
+    <label>Category</label>
+    <select name="category" required>
+      <option value="">Select</option>
+      <option>Food & Drink</option>
+      <option>Culture</option>
+      <option>Adventure</option>
+      <option>Art & Music</option>
+    </select>
+
+    <label>Description</label>
+    <textarea name="description" rows="4" required></textarea>
+
+    <label>Price (₹)</label>
+    <input type="number" name="price" required>
+
+    <button type="submit">Submit Experience</button>
+  </form>
+</div>

@@ -1,0 +1,235 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+  /* Animated background */
+body {
+  background: linear-gradient(
+    -45deg,
+    #ff385c,
+    #ff7a18,
+    #ffd194,
+    #fff1eb
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 14s ease infinite;
+}
+
+/* Main container */
+.terms-container {
+  max-width: 900px;
+  margin: 70px auto;
+  padding: 35px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Heading */
+.terms-container h1 {
+  font-size: 38px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+/* Animated underline */
+.terms-container h1::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background: #ff385c;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  animation: underline 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.updated {
+  color: #666;
+  margin-bottom: 35px;
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Sections as cards */
+section {
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+/* Stagger animation */
+section:nth-of-type(1)  { animation-delay: 0.4s; }
+section:nth-of-type(2)  { animation-delay: 0.6s; }
+section:nth-of-type(3)  { animation-delay: 0.8s; }
+section:nth-of-type(4)  { animation-delay: 1s; }
+section:nth-of-type(5)  { animation-delay: 1.2s; }
+section:nth-of-type(6)  { animation-delay: 1.4s; }
+section:nth-of-type(7)  { animation-delay: 1.6s; }
+section:nth-of-type(8)  { animation-delay: 1.8s; }
+section:nth-of-type(9)  { animation-delay: 2s; }
+section:nth-of-type(10) { animation-delay: 2.2s; }
+section:nth-of-type(11) { animation-delay: 2.4s; }
+section:nth-of-type(12) { animation-delay: 2.6s; }
+section:nth-of-type(13) { animation-delay: 2.8s; }
+section:nth-of-type(14) { animation-delay: 3s; }
+
+/* Hover effect */
+section:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.08);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline {
+  to { width: 160px; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+</style>
+<body>
+  
+<div class="terms-container">
+
+  <h1>Terms & Conditions</h1>
+  <p class="updated">Last updated: January 2026</p>
+
+  <section>
+    <h2>1. Acceptance of Terms</h2>
+    <p>
+      By accessing or using Wanderlust, you agree to be bound by these
+      Terms & Conditions. If you do not agree, you may not use the platform.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Eligibility</h2>
+    <p>
+      You must be at least 18 years old to use Wanderlust.
+      All information provided must be accurate and complete.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. User Accounts</h2>
+    <ul>
+      <li>You are responsible for maintaining account security</li>
+      <li>Password sharing is strictly prohibited</li>
+      <li>Unauthorized activity may result in account suspension</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Hosting & Experiences</h2>
+    <p>
+      Hosts are responsible for the accuracy of listings and experiences.
+      Wanderlust acts only as a platform and does not own or manage properties.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Bookings & Payments</h2>
+    <p>
+      All bookings must be made through the Wanderlust platform.
+      Payments are processed securely via trusted third-party gateways.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Cancellations & Refunds</h2>
+    <p>
+      Cancellation and refund policies vary depending on the listing or experience.
+      Applicable policies will be shown at the time of booking.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. User Conduct</h2>
+    <ul>
+      <li>No illegal or fraudulent activities</li>
+      <li>No harassment, abuse, or hate speech</li>
+      <li>No fake reviews or misleading content</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. Content & Reviews</h2>
+    <p>
+      Users may post reviews and content.
+      Wanderlust reserves the right to remove inappropriate or misleading content.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Intellectual Property</h2>
+    <p>
+      All platform content including logos, designs, and code
+      are the property of Wanderlust and may not be reused without permission.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Limitation of Liability</h2>
+    <p>
+      Wanderlust is not responsible for losses, damages,
+      or disputes between hosts and guests.
+    </p>
+  </section>
+
+  <section>
+    <h2>11. Termination</h2>
+    <p>
+      We reserve the right to suspend or terminate accounts
+      that violate these Terms & Conditions.
+    </p>
+  </section>
+
+  <section>
+    <h2>12. Governing Law</h2>
+    <p>
+      These terms are governed by the laws applicable in India.
+    </p>
+  </section>
+
+  <section>
+    <h2>13. Changes to Terms</h2>
+    <p>
+      Wanderlust may update these Terms at any time.
+      Continued use of the platform implies acceptance of updated terms.
+    </p>
+  </section>
+
+  <section>
+    <h2>14. Contact Us</h2>
+    <p>
+      For any questions regarding these Terms:
+      <strong>support@wanderlust.com</strong>
+    </p>
+  </section>
+
+</div>
+</body>

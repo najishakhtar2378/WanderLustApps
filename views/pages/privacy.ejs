@@ -1,0 +1,237 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+ /* Page background (soft gradient) */
+body {
+  background: linear-gradient(
+    -45deg,
+    #ff385c,
+    #ff7a18,
+    #ffd194,
+    #fff1eb
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 14s ease infinite;
+}
+
+/* Main container */
+.privacy-container {
+  max-width: 900px;
+  margin: 70px auto;
+  padding: 35px;
+  line-height: 1.8;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+
+  /* entry animation */
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Heading */
+.privacy-container h1 {
+  font-size: 38px;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+/* Animated underline */
+.privacy-container h1::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background: #ff385c;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  animation: underline 1s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.updated {
+  color: #666;
+  margin-bottom: 35px;
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Sections as animated cards */
+section {
+  margin-bottom: 30px;
+  padding: 25px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+/* stagger effect */
+section:nth-of-type(1) { animation-delay: 0.4s; }
+section:nth-of-type(2) { animation-delay: 0.6s; }
+section:nth-of-type(3) { animation-delay: 0.8s; }
+section:nth-of-type(4) { animation-delay: 1s; }
+section:nth-of-type(5) { animation-delay: 1.2s; }
+section:nth-of-type(6) { animation-delay: 1.4s; }
+section:nth-of-type(7) { animation-delay: 1.6s; }
+section:nth-of-type(8) { animation-delay: 1.8s; }
+section:nth-of-type(9) { animation-delay: 2s; }
+section:nth-of-type(10){ animation-delay: 2.2s; }
+section:nth-of-type(11){ animation-delay: 2.4s; }
+
+/* Hover lift */
+section:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.08);
+}
+
+/* Section headings */
+section h2 {
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Lists */
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline {
+  to { width: 140px; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+</style>
+<body>
+<div class="privacy-container">
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">Last updated: January 2026</p>
+
+  <section>
+    <h2>1. Introduction</h2>
+    <p>
+      Welcome to Wanderlust. Your privacy is important to us.
+      This Privacy Policy explains how we collect, use, and protect
+      your personal information when you use our platform.
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Information We Collect</h2>
+    <ul>
+      <li>Name, email address, phone number</li>
+      <li>Account login credentials</li>
+      <li>Profile information and photos</li>
+      <li>Booking, hosting, and experience details</li>
+      <li>Payment information (processed via secure third-party services)</li>
+      <li>Device, browser, IP address, and cookies</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>3. How We Use Your Information</h2>
+    <ul>
+      <li>To create and manage user accounts</li>
+      <li>To process bookings and experiences</li>
+      <li>To enable communication between hosts and guests</li>
+      <li>To improve platform performance and user experience</li>
+      <li>To ensure safety, security, and fraud prevention</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>4. Sharing of Information</h2>
+    <p>
+      Wanderlust does not sell user data. Information may be shared:
+    </p>
+    <ul>
+      <li>With hosts or guests during bookings</li>
+      <li>With trusted payment gateways</li>
+      <li>To comply with legal obligations</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>5. Data Security</h2>
+    <p>
+      We implement industry-standard security measures such as encryption,
+      secure servers, and access control. However, no system is 100% secure.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Cookies</h2>
+    <p>
+      Wanderlust uses cookies to maintain login sessions, remember preferences,
+      and analyze site traffic. You can control cookies through your browser.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. User Rights</h2>
+    <ul>
+      <li>Access and update personal information</li>
+      <li>Request account deletion</li>
+      <li>Opt out of marketing communications</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>8. Third-Party Links</h2>
+    <p>
+      Our platform may contain links to third-party websites.
+      Wanderlust is not responsible for their privacy practices.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Children’s Privacy</h2>
+    <p>
+      Wanderlust is intended for users aged 18 and above.
+      We do not knowingly collect data from children.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Policy Updates</h2>
+    <p>
+      We may update this Privacy Policy from time to time.
+      Changes will be posted on this page.
+    </p>
+  </section>
+
+  <section>
+    <h2>11. Contact Us</h2>
+    <p>
+      For privacy-related questions, contact us at:
+      <strong>support@wanderlust.com</strong>
+    </p>
+  </section>
+</div>
+</body>

@@ -1,0 +1,150 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+  /* Animated gradient background */
+body {
+  background: linear-gradient(
+    -45deg,
+    #6a11cb,
+    #2575fc,
+    #43cea2,
+    #185a9d
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Container */
+.help-container {
+  max-width: 900px;
+  margin: 70px auto;
+  padding: 40px;
+  background: rgba(255,255,255,0.96);
+  border-radius: 22px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Heading */
+.help-container h1 {
+  font-size: 40px;
+  position: relative;
+}
+
+.help-container h1::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background: #2575fc;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  animation: underline 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.subtitle {
+  color: #666;
+  margin: 20px 0 40px;
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Sections */
+section {
+  margin-bottom: 28px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+section h2 {
+  color: #2575fc;
+  margin-bottom: 10px;
+}
+
+section ul li {
+  margin: 8px 0;
+  color: #444;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline {
+  to { width: 150px; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+</style>
+<body>
+<div class="help-container">
+  <h1>Help Center</h1>
+  <p class="subtitle">
+    We’re here to help you, anytime 💬
+  </p>
+
+  <section>
+    <h2>Getting Started</h2>
+    <ul>
+      <li>How to create an account</li>
+      <li>How to book a stay</li>
+      <li>How to host a property or experience</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Bookings & Payments</h2>
+    <ul>
+      <li>Payment methods supported</li>
+      <li>Refund & cancellation policy</li>
+      <li>Booking confirmation issues</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Hosting</h2>
+    <ul>
+      <li>How to list your property</li>
+      <li>Managing bookings</li>
+      <li>Host responsibilities</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Account & Security</h2>
+    <ul>
+      <li>Resetting password</li>
+      <li>Updating profile information</li>
+      <li>Account suspension & recovery</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact Support</h2>
+    <p>
+      Still need help? Reach out to us at  
+      <strong>support@wanderlust.com</strong>
+    </p>
+  </section>
+</div>
+</body>

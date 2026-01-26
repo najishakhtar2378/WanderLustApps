@@ -1,0 +1,180 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+/* Animated gradient background */
+body {
+  background: linear-gradient(
+    -45deg,
+    #ff385c,
+    #ff7a18,
+    #ffd194,
+    #fff1eb
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 14s ease infinite;
+}
+
+/* Container */
+.careers-container {
+  max-width: 900px;
+  margin: 70px auto;
+  padding: 40px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 22px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Heading */
+.careers-container h1 {
+  font-size: 40px;
+  position: relative;
+}
+
+.careers-container h1::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background: #ff385c;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  animation: underline 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.subtitle {
+  color: #666;
+  margin: 20px 0 40px;
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Sections */
+section {
+  margin-bottom: 30px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+/* Job cards */
+.job-card {
+  padding: 18px;
+  border-radius: 14px;
+  background: #f9f9f9;
+  margin-top: 15px;
+  transition: 0.3s ease;
+}
+
+.job-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+.job-card h3 {
+  margin-bottom: 5px;
+  color: #ff385c;
+}
+
+.job-card span {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline {
+  to { width: 180px; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+</style>
+<body>
+<div class="careers-container">
+
+  <h1>Careers at Wanderlust</h1>
+  <p class="subtitle">
+    Join us in building the future of travel ✈️
+  </p>
+
+  <section>
+    <h2>Why Work With Us?</h2>
+    <p>
+      At Wanderlust, we believe travel connects people and cultures.
+      We are building a platform that empowers hosts, travelers,
+      and communities across the world.
+    </p>
+  </section>
+
+  <section>
+    <h2>What We Value</h2>
+    <ul>
+      <li>🌍 Passion for travel & technology</li>
+      <li>🤝 Teamwork & ownership</li>
+      <li>🚀 Continuous learning</li>
+      <li>💡 Innovation & creativity</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Open Positions</h2>
+
+    <div class="job-card">
+      <h3>Frontend Developer</h3>
+      <p>React, UI/UX, Performance optimization</p>
+      <span>Location: Remote</span>
+    </div>
+
+    <div class="job-card">
+      <h3>Backend Developer</h3>
+      <p>Node.js, Express, MongoDB</p>
+      <span>Location: India</span>
+    </div>
+
+    <div class="job-card">
+      <h3>UI/UX Designer</h3>
+      <p>Figma, User research, Prototyping</p>
+      <span>Location: Remote</span>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Internships</h2>
+    <p>
+      We also offer internship opportunities for students
+      who want real-world project experience.
+    </p>
+  </section>
+
+  <section>
+    <h2>How to Apply</h2>
+    <p>
+      Send your resume and portfolio to  
+      <strong>careers@wanderlust.com</strong>
+    </p>
+  </section>
+
+</div>
+</body>
