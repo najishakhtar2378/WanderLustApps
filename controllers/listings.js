@@ -167,3 +167,40 @@ module.exports.index = async (req, res) => {
     wishlistIds
   });
 };
+module.exports.index = async (req, res) => {
+  const { search, category, country, minPrice, maxPrice } = req.query;
+
+  let filter = {};
+
+  // Search (title OR location)
+  if (search) {
+    filter.$or = [
+      { title: { $regex: search, $options: "i" } },
+      { location: { $regex: search, $options: "i" } }
+    ];
+  }
+
+  // Category
+  if (category) {
+    filter.category = category;
+  }
+
+  // Country
+  if (country) {
+    filter.country = { $regex: country, $options: "i" };
+  }
+
+  // Price Range
+  if (minPrice || maxPrice) {
+    filter.price = {};
+    if (minPrice) filter.price.$gte = minPrice;
+    if (maxPrice) filter.price.$lte = maxPrice;
+  }
+
+  const allListings = await Listing.find(filter);
+
+  res.render("listings/index", {
+    allListings,
+    query: req.query
+  });
+};
