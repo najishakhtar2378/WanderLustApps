@@ -113,6 +113,73 @@
     margin-bottom: 1.5rem;
   }
 }
+.smart-filter {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+  animation: slideFade 0.6s ease;
+}
+
+/* inputs + select */
+.smart-filter .form-control,
+.smart-filter .form-select {
+  border-radius: 14px;
+  border: 1px solid #e3e3e3;
+  padding: 0.65rem 0.75rem;
+  transition: all 0.25s ease;
+  font-size: 0.9rem;
+}
+
+/* focus effect */
+.smart-filter .form-control:focus,
+.smart-filter .form-select:focus {
+  border-color: #ff385c;
+  box-shadow: 0 0 0 3px rgba(255,56,92,0.15);
+  transform: translateY(-2px);
+}
+
+/* button */
+.smart-filter button {
+  border-radius: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.smart-filter button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(255,56,92,0.35);
+}
+
+/* subtle entry animation */
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* mobile polish */
+@media (max-width: 768px) {
+  .smart-filter {
+    border-radius: 16px;
+    padding: 0.8rem;
+  }
+}
+.main{
+  font-size: large;
+  color: red;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 1rem;
+}
+
 </style>
 
     <div id="filters">
@@ -138,6 +205,64 @@
         </div>
       <% } %>
     </div>
+      <!-- search box start -->
+     <form action="/listings" method="GET" class="row g-2 mb-4 smart-filter">
+
+  <!-- Search -->
+  <div class="col-md-3">
+    <input type="text" name="search" class="form-control"
+      placeholder="Search by title or location"
+      value="<%= query.search || '' %>">
+  </div>
+
+  <!-- Category -->
+  <div class="col-md-2">
+    <select name="category" class="form-select">
+      <option value="">All Categories</option>
+      <option value="Rooms">Rooms</option>
+      <option value="Trending">Trending</option>
+      <option value="Mountains">Mountains</option>
+      <option value="Castles">Castles</option>
+      <option value="Iconic Cities">Iconic Cities</option>
+      <option value="Amazing Pools">Amazing Pools</option>
+      <option value="Camping">Camping</option>
+      <option value="Farms">Farms</option>
+      <option value="Arctic">Arctic</option>
+      <option value="Domes">Domes</option>
+      <option value="Lakes">Lakes</option>
+    </select>
+  </div>
+
+  <!-- Country -->
+  <div class="col-md-2">
+    <input type="text" name="country" class="form-control"
+      placeholder="Country">
+  </div>
+
+  <!-- Min Price -->
+  <div class="col-md-2">
+    <input type="number" name="minPrice" class="form-control"
+      placeholder="Min ₹">
+  </div>
+
+  <!-- Max Price -->
+  <div class="col-md-2">
+    <input type="number" name="maxPrice" class="form-control"
+      placeholder="Max ₹">
+  </div>
+
+  <!-- Button -->
+  <div class="col-md-1">
+    <button class="btn btn-danger w-100">Go</button>
+  </div>
+
+</form>
+   <div class="main">
+     <% if (allListings.length === 0) { %>
+     <p class="text-center mt-4 ">No listings found</p>
+     <% } %>
+   </div>
+    <!-- search box end -->
 
     <div class="tex-switch">
       <div class="form-check-reverse form-switch">
