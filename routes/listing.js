@@ -30,7 +30,7 @@ router.get("/category/:category", async (req, res) => {
     res.render("./listings/category", { listings, category });
 });
 
-
+router.get("/", listingController.index);
 
 router.get("/search",wrapAsync( async (req, res) => {
     const query = req.query.query; // Get the query from the search form
