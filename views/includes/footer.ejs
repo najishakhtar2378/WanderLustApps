@@ -1,92 +1,135 @@
 <style>
-    .airbnb-footer {
-  background-color: #f7f7f7;
-  padding: 60px 0 30px;
-  font-size: 14px;
-  color: #555;
+/* ===== DARK PREMIUM FOOTER ===== */
+.airbnb-footer {
+  background: linear-gradient(
+    135deg,
+    #111827,
+    #1f2937,
+    #0f172a
+  );
+  color: #d1d5db;
+  padding: 70px 0 35px;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Soft animated accent glow */
+.airbnb-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(254,66,77,0.15), transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(255,184,77,0.12), transparent 55%);
+  animation: footerGlow 14s linear infinite;
+  pointer-events: none;
+}
+
+/* Brand */
 .footer-brand {
-  font-weight: 600;
-  font-size: 20px;
-  margin-bottom: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
 }
 
 .footer-desc {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.6;
+  color: #9ca3af;
 }
 
+/* Headings */
 .airbnb-footer h6 {
+  color: #f9fafb;
   font-weight: 600;
-  margin-bottom: 12px;
-  color: #222;
+  margin-bottom: 14px;
 }
 
-.airbnb-footer ul {
-  list-style: none;
-  padding: 0;
-}
-
-.airbnb-footer ul li {
-  margin-bottom: 8px;
-}
-
+/* Links */
 .airbnb-footer a {
-  color: #2e2d2d;
-  text-decoration: none;
+  color: #9ca3af;
+  transition: all 0.3s ease;
 }
 
 .airbnb-footer a:hover {
-  text-decoration: underline;
   color: #fe424d;
+  text-decoration: none;
 }
 
+/* Animated underline */
+.airbnb-footer a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #fe424d;
+  transition: width 0.3s ease;
+}
+
+.airbnb-footer a:hover::after {
+  width: 100%;
+}
+
+/* Columns hover lift */
+.airbnb-footer .col-lg-3 {
+  transition: transform 0.35s ease;
+}
+
+.airbnb-footer .col-lg-3:hover {
+  transform: translateY(-8px);
+}
+
+/* Divider */
 .airbnb-footer hr {
-  margin: 30px 0;
-  border-color:  #2e2d2d;
+  border-color: rgba(255,255,255,0.15);
 }
 
+/* Bottom bar */
 .footer-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 20px;
+  color: #9ca3af;
 }
 
-.footer-left {
-  font-size: 13px;
-  color: #666;
-}
-
-.footer-center span {
-  margin-right: 15px;
-  cursor: pointer;
-  font-size: 13px;
-}
-
+/* Social icons */
 .footer-socials i {
+  color: #e5e7eb;
   font-size: 18px;
-  margin-left: 15px;
-  cursor: pointer;
+  margin-left: 16px;
   transition: 0.3s ease;
 }
 
 .footer-socials i:hover {
   color: #fe424d;
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
-/* Mobile Friendly */
-@media (max-width: 768px) {
-  .footer-bottom {
-    text-align: center;
-    justify-content: center;
-  }
+/* Floating animation */
+.footer-socials i {
+  animation: socialFloat 3s ease-in-out infinite;
+}
 
-  .footer-socials i {
-    margin-left: 10px;
+.footer-socials i:nth-child(2){animation-delay:0.3s}
+.footer-socials i:nth-child(3){animation-delay:0.6s}
+.footer-socials i:nth-child(4){animation-delay:0.9s}
+
+/* ===== Animations ===== */
+
+@keyframes footerGlow {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes socialFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .airbnb-footer {
+    text-align: center;
   }
 }
 </style>
@@ -98,7 +141,7 @@
       <!-- BRAND -->
       <div class="col-lg-3 col-md-6">
         <h5 class="footer-brand">
-          <i class="fa-regular fa-compass"></i> WanderLust
+          <i class="fa-regular fa-compass"></i> WanderNest
         </h5>
         <p class="footer-desc">
           Find stays, experiences, and adventures across the globe with trusted hosts.
@@ -109,7 +152,7 @@
       <div class="col-lg-3 col-md-6">
         <h6>Support</h6>
         <ul>
-          <li><a href="#">Help Centre</a></li>
+          <li><a href="/help">Help Centre</a></li>
           <li><a href="#">Safety Information</a></li>
           <li><a href="#">Cancellation Options</a></li>
           <li><a href="#">Report Concern</a></li>
@@ -121,7 +164,7 @@
         <h6>Hosting</h6>
         <ul>
           <li><a href="/listings/new">Airbnb your home</a></li>
-          <li><a href="#">Host an experience</a></li>
+          <li><a href="/host/experience">Host an experience</a></li>
           <li><a href="#">Responsible hosting</a></li>
           <li><a href="/host/dashboard">Host dashboard</a></li>
         </ul>
@@ -131,9 +174,9 @@
       <div class="col-lg-3 col-md-6">
         <h6>Company</h6>
         <ul>
-          <li><a href="#">About WanderLust</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/about">About WanderNest</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/privacy">Privacy Policy</a></li>
           <li><a href="/terms">Terms</a></li>
         </ul>
       </div>
@@ -142,7 +185,7 @@
     <!-- BOTTOM BAR -->
     <div class="footer-bottom">
       <div class="footer-left">
-        © 2026 WanderLust Private Limited · All rights reserved
+        © 2026 WanderNest Private Limited · All rights reserved
       </div>
       <div class="footer-center">
         <span><i class="fa-solid fa-globe"></i> English (IN)</span>
