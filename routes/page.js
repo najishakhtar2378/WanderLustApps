@@ -16,4 +16,10 @@ router.get("/careers", (req, res) => {
 router.get("/help", (req, res) => {
   res.render("pages/help");
 });
+router.get("/safety", (req, res) => {
+  res.render("pages/safety");
+});
+router.get("/report-success", (req, res) => {
+  res.render("pages/report-success");
+});
 module.exports = router;
