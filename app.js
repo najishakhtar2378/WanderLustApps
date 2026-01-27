@@ -27,6 +27,7 @@ const paymentRoutes = require("./routes/payment");
 const invoiceRoutes = require("./routes/invoice");
 const experienceRoutes = require("./routes/experience");
 const pagesRoutes = require("./routes/page");
+const reportRoutes = require("./routes/report");
 const dbUrl=process.env.ATLASDB_URL;
 
 // const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -105,6 +106,7 @@ app.use("/payments", paymentRoutes);
 app.use("/", invoiceRoutes);
 app.use("/host", experienceRoutes);
 app.use(pagesRoutes);
+app.use(reportRoutes);
 
 app.all("/{*any}", (req, res, next) => {
     next(new ExpressError(404, "page Not found"))
