@@ -1,0 +1,146 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+/* Calm trust-building gradient */
+body {
+  background: linear-gradient(
+    -45deg,
+    #0f766e,
+    #0d9488,
+    #14b8a6,
+    #5eead4
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 18s ease infinite;
+}
+
+/* Container */
+.safety-container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 45px;
+  background: rgba(255,255,255,0.97);
+  border-radius: 24px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Title */
+.safety-container h1 {
+  font-size: 42px;
+  position: relative;
+  color: #0f766e;
+}
+
+.safety-container h1::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background: #14b8a6;
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  animation: underline 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.subtitle {
+  margin: 22px 0 45px;
+  color: #555;
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Sections */
+section {
+  margin-bottom: 28px;
+  padding: 28px;
+  background: #f9fafb;
+  border-radius: 18px;
+  border-left: 6px solid #14b8a6;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+section h2 {
+  color: #0f766e;
+  margin-bottom: 10px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline {
+  to { width: 220px; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+</style>
+<body>
+  
+
+<div class="safety-container">
+
+  <h1>Safety Information</h1>
+  <p class="subtitle">
+    Your safety is our top priority at WanderNest
+  </p>
+
+  <section>
+    <h2>Verified Hosts & Listings</h2>
+    <p>
+      All hosts are encouraged to verify their identity.
+      Listings are reviewed to maintain quality and trust.
+    </p>
+  </section>
+
+  <section>
+    <h2>Secure Payments</h2>
+    <p>
+      All payments are processed through secure and trusted
+      payment gateways with encryption.
+    </p>
+  </section>
+
+  <section>
+    <h2>Guest & Host Protection</h2>
+    <p>
+      WanderNest provides support and protection measures
+      for both guests and hosts during stays and experiences.
+    </p>
+  </section>
+
+  <section>
+    <h2>Health & Hygiene</h2>
+    <p>
+      Hosts are expected to follow hygiene and cleanliness
+      guidelines to ensure a safe environment.
+    </p>
+  </section>
+
+  <section>
+    <h2>24/7 Support</h2>
+    <p>
+      Our support team is available around the clock to help
+      with emergencies or safety concerns.
+    </p>
+  </section>
+
+</div>
+</body>

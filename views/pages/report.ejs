@@ -1,0 +1,200 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+/* Alert gradient background */
+body {
+  background: linear-gradient(
+    -45deg,
+    #7f1d1d,
+    #b91c1c,
+    #dc2626,
+    #fecaca
+  );
+  background-size: 400% 400%;
+  animation: gradientBG 16s ease infinite;
+}
+
+/* Container */
+.report-container {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 45px;
+  background: rgba(255,255,255,0.97);
+  border-radius: 24px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+  animation: fadeIn 1s ease forwards;
+}
+
+/* Heading */
+.report-container h1 {
+  font-size: 42px;
+  color: #b91c1c;
+  position: relative;
+}
+
+.report-container h1::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background: #dc2626;
+  position: absolute;
+  left: 0;
+  bottom: -12px;
+  animation: underline 1s ease forwards;
+  animation-delay: 0.4s;
+}
+
+.subtitle {
+  margin: 22px 0 45px;
+  color: #555;
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* Sections */
+section {
+  margin-bottom: 30px;
+  padding: 28px;
+  background: #fef2f2;
+  border-left: 6px solid #dc2626;
+  border-radius: 18px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideUp 0.8s ease forwards;
+}
+
+section h2 {
+  color: #991b1b;
+  margin-bottom: 10px;
+}
+
+/* Form */
+.report-form .form-group {
+  margin-bottom: 18px;
+}
+
+.report-form input,
+.report-form select,
+.report-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  outline: none;
+}
+
+.report-form input:focus,
+.report-form select:focus,
+.report-form textarea:focus {
+  border-color: #dc2626;
+}
+
+.report-form button {
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.report-form button:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes underline {
+  to { width: 260px; }
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+</style>
+<body>
+
+<div class="report-container">
+
+  <h1>Report a Concern</h1>
+  <p class="subtitle">
+    Your safety and trust matter to us
+  </p>
+
+  <section>
+    <h2>When Should You Report?</h2>
+    <ul>
+      <li>Suspicious or fraudulent listings</li>
+      <li>Harassment or abusive behavior</li>
+      <li>Payment or booking related issues</li>
+      <li>Safety or hygiene concerns</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>How We Handle Reports</h2>
+    <p>
+      Every report is reviewed carefully by our trust & safety team.
+      We take appropriate action based on platform policies.
+    </p>
+  </section>
+
+  <section>
+    <h2>Submit a Report</h2>
+
+    <form class="report-form" action="/report" method="POST">
+
+  <div class="form-group">
+    <label>Your Email</label>
+    <input 
+      type="email" 
+      name="email" 
+      placeholder="you@example.com"
+      required
+    >
+  </div>
+
+  <div class="form-group">
+    <label>Concern Type</label>
+    <select name="concernType" required>
+      <option value="">Select</option>
+      <option value="Fraud">Fraud</option>
+      <option value="Harassment">Harassment</option>
+      <option value="Safety Issue">Safety Issue</option>
+      <option value="Other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Description</label>
+    <textarea 
+      name="description" 
+      rows="4"
+      placeholder="Describe the issue..."
+      required
+    ></textarea>
+  </div>
+
+  <button type="submit">Submit Report</button>
+</form>
+
+  </section>
+</div>
+</body>
