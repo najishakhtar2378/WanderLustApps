@@ -47,6 +47,21 @@
    min-width:auto;
    height:auto;
 }
+
+.founder-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background-color: #ff385c;
+  transition: 0.3s ease;
+}
+
+.founder-link:hover::after {
+  width: 100%;
+}
    
 
   
@@ -68,6 +83,13 @@
           <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav me-auto">
                   <li class="nav-item"><a class="nav-link" href="/listings"><b>Explore</b></a></li>
+              </ul>
+           <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+           <a class="nav-link founder-link" href="/founder">
+               Founder
+              </a>
+             </li>
               </ul>
   
               <!-- Search Bar -->
