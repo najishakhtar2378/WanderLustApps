@@ -1,0 +1,107 @@
+<% layout("./layouts/boilerplate") %>
+<style>
+  .founder-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  animation: bgMove 8s infinite alternate;
+}
+
+@keyframes bgMove {
+  0% { background-position: left; }
+  100% { background-position: right; }
+}
+
+.founder-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 900px;
+  display: flex;
+  gap: 40px;
+  color: white;
+  animation: fadeUp 1s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.founder-image img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 5px solid #ff385c;
+  object-fit: cover;
+}
+
+.founder-content h1 {
+  font-size: 2.5rem;
+}
+
+.founder-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.founder-content ul li {
+  margin: 8px 0;
+}
+
+.founder-socials .btn {
+  margin-right: 10px;
+  background: #ff385c;
+  padding: 10px 18px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.founder-socials .btn:hover {
+  background: #e11d48;
+}
+
+</style>
+<body>
+<section class="founder-section">
+  <div class="founder-card">
+    
+    <div class="founder-image">
+      <img src="/images/founder.jpg" alt="Founder">
+    </div>
+
+    <div class="founder-content">
+      <h1> Er Najish Akhtar</h1>
+      <h4>Founder & Lead Developer – Wanderlust</h4>
+
+      <p>
+        Wanderlust was founded with the vision of creating meaningful travel
+        experiences while empowering hosts and travelers worldwide.
+        This platform is built to ensure trust, safety, and seamless user experience.
+      </p>
+
+      <ul>
+        <li>🚀 Full-Stack Developer & Machine learning Engineer</li>
+        <li>🌍 Passionate about Travel Technology & Build alogrithms</li>
+        <li>💡 Focused on Scalable Web Applications & Build Algorithms</li>
+        <li>🛡️ Security & User Trust Advocate</li>
+
+      </ul>
+
+      <div class="founder-socials">
+        <a href="https://linkedin.com/in/najish-akhtar-698b30263" class="btn">LinkedIn</a>
+        <a href="https://github.com/najishakhtar2378/" class="btn">GitHub</a>
+        <a href="https://portfolio-8xpp.vercel.app/" class="btn">Portfolio</a>
+        <a href="https://instagram.com/najish3262" class="btn">Instagram</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+</body>
+
