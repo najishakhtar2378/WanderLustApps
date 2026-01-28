@@ -89,11 +89,13 @@
                   <li class="nav-item"><a class="nav-link" href="/listings"><b>Explore</b></a></li>
               </ul>
            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-           <a class="nav-link founder-link" href="/founder">
-               Founder
-              </a>
-             </li>
+                <% if (currUser && currUser.role === "admin") { %>
+                  <li class="nav-item">
+                 <a class="nav-link founder-link" href="/founder">
+                  Founder
+                   </a>
+               </li>
+             <% } %>
               </ul>
   
               <!-- Search Bar -->
