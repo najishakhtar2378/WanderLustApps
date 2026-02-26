@@ -113,6 +113,7 @@
     margin-bottom: 1.5rem;
   }
 }
+/* ===== Smart Filter Bar ===== */
 .smart-filter {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(12px);
@@ -171,6 +172,19 @@
     border-radius: 16px;
     padding: 0.8rem;
   }
+  /* hide horizontal filter bar on small screens (in addition to util classes) */
+  #filters {
+    display: none !important;
+  }
+  /* sidebar list items full width */
+  #filters-mobile .filter {
+    width: 100%;
+  }
+  #filters-mobile .filter a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 }
 .main{
   font-size: large;
@@ -180,9 +194,52 @@
   margin-top: 1rem;
 }
 
-</style>
+    </style>
 
-    <div id="filters">
+    <!-- mobile filter toggle button (visible on xs/md screens) -->
+    <div class="d-md-none mb-3">
+      <button class="btn btn-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#filterSidebar" aria-controls="filterSidebar">
+        <i class="fa fa-sliders-h"></i> Filters
+      </button>
+    </div>
+
+    <!-- offcanvas sidebar containing the same categories for mobile users -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="filterSidebar" aria-labelledby="filterSidebarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="filterSidebarLabel">Categories</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="filters-mobile" class="d-flex flex-column">
+          <% // reuse category array for mobile sidebar %>
+          <% const categories = [
+            { name: "Trending", icon: "fa-fire" },
+            { name: "Rooms", icon: "fa-bed" },
+            { name: "Iconic Cities", icon: "fa-mountain-city" },
+            { name: "Mountains", icon: "fa-mountain" },
+            { name: "Castles", icon: "fa-fort-awesome" },
+            { name: "Amazing Pools", icon: "fa-person-swimming" },
+            { name: "Camping", icon: "fa-campground" },
+            { name: "Farms", icon: "fa-cow" },
+            { name: "Arctic", icon: "fa-snowflake" },
+            { name: "Domes", icon: "fa-igloo" },
+            {name: "lakes",icon:"fa-water"},
+            {name: "Beaches", icon: "fa-umbrella-beach" },
+            { name: "Deserts", icon: "fa-sun" }
+          ]; %>
+          <% for (let category of categories) { %>
+            <div class="filter mb-2">
+              <a href="/listings/category/<%= category.name %>">
+                <div><i class="fa-solid <%= category.icon %>"></i> <%= category.name %></div>
+              </a>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+
+    <!-- original horizontal filter bar (hidden on small screens) -->
+    <div id="filters" class="d-none d-md-flex">
       <% const categories = [
         { name: "Trending", icon: "fa-fire" },
         { name: "Rooms", icon: "fa-bed" },
@@ -194,8 +251,10 @@
         { name: "Farms", icon: "fa-cow" },
         { name: "Arctic", icon: "fa-snowflake" },
         { name: "Domes", icon: "fa-igloo" },
+        {name: "lakes",icon:"fa-water"},
         {name: "Beaches", icon: "fa-umbrella-beach" },
         { name: "Deserts", icon: "fa-sun" }
+
       ]; %>
       
       <% for (let category of categories) { %>
@@ -207,7 +266,7 @@
         </div>
       <% } %>
     </div>
-      <!-- search box start -->
+    <!-- search box start -->
      <form action="/listings" method="GET" class="row g-2 mb-4 smart-filter">
 
   <!-- Search -->
@@ -265,6 +324,7 @@
      <% } %>
    </div>
     <!-- search box end -->
+    
 
     <div class="tex-switch">
       <div class="form-check-reverse form-switch">
@@ -272,10 +332,10 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
       </div>
     </div>
-
+   
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3"> 
       <% for (let listings of allListings) { %>
-          <a href="/listings/<%= listings._id %>" class="listing-link">
+          <a href="/listings/<%= listings._id %>"class="listing-link">
              <div class="card col listing-card position-relative">
               <% if (currUser) { %>
               <form action="/wishlist/<%= listings._id %>" method="POST"
